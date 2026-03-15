@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Biblioteca_do_Ze", "Biblioteca_do_Ze.csproj", "{0A69A6FE-96A1-88B3-3AC8-FEC733559C05}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0A69A6FE-96A1-88B3-3AC8-FEC733559C05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A69A6FE-96A1-88B3-3AC8-FEC733559C05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A69A6FE-96A1-88B3-3AC8-FEC733559C05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A69A6FE-96A1-88B3-3AC8-FEC733559C05}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {16E34607-FBAC-43DE-B946-2B92D4A94510}
+	EndGlobalSection
+EndGlobal
