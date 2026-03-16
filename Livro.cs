@@ -20,6 +20,14 @@ namespace Biblioteca
         // possam ler e alterar as informações dos livros, como título,
         // autor, etc.
 
+        // Construtor vazio: Permite criar um livro sem passar dados logo de cara (ex: `new Livro()`)
+        // Muito útil quando vamos ler os dados do teclado um por um depois de criar o objeto.
+        public Livro() 
+        { 
+        }
+
+        // Construtor com parâmetros: Permite criar um livro já passando os dados básicos.
+        // Isso é o que o professor chamou de "Sobrecarga de construtores" nos slides!
         public Livro(string titulo, string autor)
         {
             this.Titulo = titulo;

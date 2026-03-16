@@ -12,3 +12,18 @@ C:\Users\PabloValenteNeto\Documents\Uniplacson\Desenvolvimento de sistemas 1\Aul
 C:\Users\PabloValenteNeto\Documents\Uniplacson\Desenvolvimento de sistemas 1\Aula 03 - NULL\Biblioteca_do_Ze\obj\Debug\net10.0\Biblioteca_do_Ze.pdb
 C:\Users\PabloValenteNeto\Documents\Uniplacson\Desenvolvimento de sistemas 1\Aula 03 - NULL\Biblioteca_do_Ze\obj\Debug\net10.0\Biblioteca_do_Ze.genruntimeconfig.cache
 C:\Users\PabloValenteNeto\Documents\Uniplacson\Desenvolvimento de sistemas 1\Aula 03 - NULL\Biblioteca_do_Ze\obj\Debug\net10.0\ref\Biblioteca_do_Ze.dll
+D:\UNIPLAC\3 SEM\Desenvolvimento de sistemas 1\Aula 04 - Biblioteca do Ze\biblioteca-do-ze\bin\Debug\net10.0\Biblioteca_do_Ze.exe
+D:\UNIPLAC\3 SEM\Desenvolvimento de sistemas 1\Aula 04 - Biblioteca do Ze\biblioteca-do-ze\bin\Debug\net10.0\Biblioteca_do_Ze.deps.json
+D:\UNIPLAC\3 SEM\Desenvolvimento de sistemas 1\Aula 04 - Biblioteca do Ze\biblioteca-do-ze\bin\Debug\net10.0\Biblioteca_do_Ze.runtimeconfig.json
+D:\UNIPLAC\3 SEM\Desenvolvimento de sistemas 1\Aula 04 - Biblioteca do Ze\biblioteca-do-ze\bin\Debug\net10.0\Biblioteca_do_Ze.dll
+D:\UNIPLAC\3 SEM\Desenvolvimento de sistemas 1\Aula 04 - Biblioteca do Ze\biblioteca-do-ze\bin\Debug\net10.0\Biblioteca_do_Ze.pdb
+D:\UNIPLAC\3 SEM\Desenvolvimento de sistemas 1\Aula 04 - Biblioteca do Ze\biblioteca-do-ze\obj\Debug\net10.0\Biblioteca_do_Ze.GeneratedMSBuildEditorConfig.editorconfig
+D:\UNIPLAC\3 SEM\Desenvolvimento de sistemas 1\Aula 04 - Biblioteca do Ze\biblioteca-do-ze\obj\Debug\net10.0\Biblioteca_do_Ze.AssemblyInfoInputs.cache
+D:\UNIPLAC\3 SEM\Desenvolvimento de sistemas 1\Aula 04 - Biblioteca do Ze\biblioteca-do-ze\obj\Debug\net10.0\Biblioteca_do_Ze.AssemblyInfo.cs
+D:\UNIPLAC\3 SEM\Desenvolvimento de sistemas 1\Aula 04 - Biblioteca do Ze\biblioteca-do-ze\obj\Debug\net10.0\Biblioteca_do_Ze.csproj.CoreCompileInputs.cache
+D:\UNIPLAC\3 SEM\Desenvolvimento de sistemas 1\Aula 04 - Biblioteca do Ze\biblioteca-do-ze\obj\Debug\net10.0\Biblioteca_do_Ze.sourcelink.json
+D:\UNIPLAC\3 SEM\Desenvolvimento de sistemas 1\Aula 04 - Biblioteca do Ze\biblioteca-do-ze\obj\Debug\net10.0\Biblioteca_do_Ze.dll
+D:\UNIPLAC\3 SEM\Desenvolvimento de sistemas 1\Aula 04 - Biblioteca do Ze\biblioteca-do-ze\obj\Debug\net10.0\refint\Biblioteca_do_Ze.dll
+D:\UNIPLAC\3 SEM\Desenvolvimento de sistemas 1\Aula 04 - Biblioteca do Ze\biblioteca-do-ze\obj\Debug\net10.0\Biblioteca_do_Ze.pdb
+D:\UNIPLAC\3 SEM\Desenvolvimento de sistemas 1\Aula 04 - Biblioteca do Ze\biblioteca-do-ze\obj\Debug\net10.0\Biblioteca_do_Ze.genruntimeconfig.cache
+D:\UNIPLAC\3 SEM\Desenvolvimento de sistemas 1\Aula 04 - Biblioteca do Ze\biblioteca-do-ze\obj\Debug\net10.0\ref\Biblioteca_do_Ze.dll
