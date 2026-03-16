@@ -1,3 +1,4 @@
+using Cadastro;
 
 namespace Biblioteca
 {
@@ -36,7 +37,7 @@ namespace Biblioteca
                 switch (opcao)
                 {
                     case "1":
-                        CadastrarLeitor(leitores);
+                        cadastroLeitor.CadastrarLeitor();
                         break;
                     case "2":
                         ListarTodosLeitores(leitores);
@@ -86,44 +87,14 @@ namespace Biblioteca
         //  MÉTODOS DAS FUNCIONALIDADES (CRUD, ETC)
         // ==========================================
 
-        static void CadastrarLeitor(List<Leitor> leitores)
-        {
-            Console.Clear();
-            Console.WriteLine("--- CADASTRAR LEITOR ---");
-            Console.Write("Digite o CPF do Leitor (apenas números): ");
-            string cpf = Console.ReadLine();
 
-            // Validação usando LINQ: Verifica se o cpf digitado já existe na lista
-            // Isso cobre a exigência "validar se o CPF informado já não esta em uso".
-            // .Any() retorna true se encontrar alguém com a mesma condição.
-            if (leitores.Any(l => l.cpf == cpf))
-            {
-                Console.WriteLine("ERRO: Já existe um leitor cadastrado com este CPF.");
-                return; // O return interrompe o fluxo e volta pro menu
-            }
-
-            Console.Write("Digite o Nome do Leitor: ");
-            string nome = Console.ReadLine();
-
-            Console.Write("Digite a Idade do Leitor: ");
-            if (!int.TryParse(Console.ReadLine(), out int idade))
-            {
-                Console.WriteLine("ERRO: Idade inválida.");
-                return;
-            }
-
-            // Utilizamos o construtor com parâmetros (sobrecarga) que acabamos de criar!
-            Leitor novoLeitor = new Leitor(nome, idade, cpf);
-            leitores.Add(novoLeitor);
-
-            Console.WriteLine("Leitor cadastrado com sucesso!");
-        }
+        static CadastroLeitor cadastroLeitor = new CadastroLeitor();
 
         static void ListarTodosLeitores(List<Leitor> leitores)
         {
             Console.Clear();
             Console.WriteLine("--- LISTA DE LEITORES E LIVROS ---");
-            
+
             if (leitores.Count == 0)
             {
                 Console.WriteLine("Nenhum leitor cadastrado.");
@@ -134,8 +105,8 @@ namespace Biblioteca
             {
                 Console.WriteLine($"\n> CPF: {leitor.cpf} | Nome: {leitor.nome} | Idade: {leitor.idade}");
                 Console.WriteLine("  Livros:");
-                
-                if(leitor.LivrosLeitor.Count == 0)
+
+                if (leitor.LivrosLeitor.Count == 0)
                 {
                     Console.WriteLine("    [Nenhum livro cadastrado]");
                 }
@@ -187,7 +158,7 @@ namespace Biblioteca
             if (leitor != null)
             {
                 Console.WriteLine($"Editando leitor atual: {leitor.nome}");
-                
+
                 Console.Write("Novo Nome: ");
                 leitor.nome = Console.ReadLine();
 
@@ -250,10 +221,10 @@ namespace Biblioteca
 
                 Console.Write("Digite o Gênero do Livro: ");
                 novoLivro.Genero = Console.ReadLine();
-                
+
                 Console.Write("Digite o Ano de Publicação: ");
                 int.TryParse(Console.ReadLine(), out novoLivro.AnoPublicacao); // Caso falhe, ano será automaticamente 0.
-                
+
                 // Embutindo o Livro na lista do Leitor usando o método criado na Aula 03/04
                 leitorEncontrado.AdicionarLivro(novoLivro);
 
@@ -340,12 +311,12 @@ namespace Biblioteca
         {
             Console.Clear();
             Console.WriteLine("--- DOAR LIVRO ---");
-            
+
             Console.Write("Digite o CPF do Leitor DOADOR: ");
             string cpfDoador = Console.ReadLine();
             Leitor doador = leitores.FirstOrDefault(l => l.cpf == cpfDoador);
 
-            if (doador == null) 
+            if (doador == null)
             {
                 Console.WriteLine("Doador não encontrado.");
                 return;
@@ -355,7 +326,7 @@ namespace Biblioteca
             string cpfDestinatario = Console.ReadLine();
             Leitor destinatario = leitores.FirstOrDefault(l => l.cpf == cpfDestinatario);
 
-            if (destinatario == null) 
+            if (destinatario == null)
             {
                 Console.WriteLine("Destinatário não encontrado.");
                 return;

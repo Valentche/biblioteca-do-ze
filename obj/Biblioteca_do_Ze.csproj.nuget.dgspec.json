@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\UNIPLAC\\3 SEM\\Desenvolvimento de sistemas 1\\Aula 04 - Biblioteca do Ze\\biblioteca-do-ze\\Biblioteca_do_Ze.csproj": {}
+    "C:\\Users\\PabloValenteNeto\\Documents\\Uniplacson\\Desenvolvimento de sistemas 1\\Aula 04 - projeto grande\\biblioteca-do-ze\\Biblioteca_do_Ze.csproj": {}
   },
   "projects": {
-    "D:\\UNIPLAC\\3 SEM\\Desenvolvimento de sistemas 1\\Aula 04 - Biblioteca do Ze\\biblioteca-do-ze\\Biblioteca_do_Ze.csproj": {
+    "C:\\Users\\PabloValenteNeto\\Documents\\Uniplacson\\Desenvolvimento de sistemas 1\\Aula 04 - projeto grande\\biblioteca-do-ze\\Biblioteca_do_Ze.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\UNIPLAC\\3 SEM\\Desenvolvimento de sistemas 1\\Aula 04 - Biblioteca do Ze\\biblioteca-do-ze\\Biblioteca_do_Ze.csproj",
+        "projectUniqueName": "C:\\Users\\PabloValenteNeto\\Documents\\Uniplacson\\Desenvolvimento de sistemas 1\\Aula 04 - projeto grande\\biblioteca-do-ze\\Biblioteca_do_Ze.csproj",
         "projectName": "Biblioteca_do_Ze",
-        "projectPath": "D:\\UNIPLAC\\3 SEM\\Desenvolvimento de sistemas 1\\Aula 04 - Biblioteca do Ze\\biblioteca-do-ze\\Biblioteca_do_Ze.csproj",
-        "packagesPath": "C:\\Users\\Vavazão\\.nuget\\packages\\",
-        "outputPath": "D:\\UNIPLAC\\3 SEM\\Desenvolvimento de sistemas 1\\Aula 04 - Biblioteca do Ze\\biblioteca-do-ze\\obj\\",
+        "projectPath": "C:\\Users\\PabloValenteNeto\\Documents\\Uniplacson\\Desenvolvimento de sistemas 1\\Aula 04 - projeto grande\\biblioteca-do-ze\\Biblioteca_do_Ze.csproj",
+        "packagesPath": "C:\\Users\\PabloValenteNeto\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\PabloValenteNeto\\Documents\\Uniplacson\\Desenvolvimento de sistemas 1\\Aula 04 - projeto grande\\biblioteca-do-ze\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Vavazão\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\PabloValenteNeto\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net10.0"
