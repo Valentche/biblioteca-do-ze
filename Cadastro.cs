@@ -7,9 +7,7 @@ namespace Cadastro
 {
     public class CadastroLeitor
     {
-        private List<Leitor> leitores = new List<Leitor>();
-
-        public void CadastrarLeitor()
+        public void CadastrarLeitor(List<Leitor> leitores)
         {
             Console.Clear();
             Console.WriteLine("--- CADASTRAR LEITOR ---");
