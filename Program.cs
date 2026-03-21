@@ -8,6 +8,8 @@ namespace Biblioteca
         {
             // Criando a Lista global de Leitores (nossa "Base de dados" na memória)
             List<Leitor> leitores = new List<Leitor>();
+            
+            CadastroLeitor cadastroLeitor = new CadastroLeitor(leitores);
 
             bool executando = true;
 
@@ -88,7 +90,7 @@ namespace Biblioteca
         // ==========================================
 
 
-        static CadastroLeitor cadastroLeitor = new CadastroLeitor();
+        
 
         static void ListarTodosLeitores(List<Leitor> leitores)
         {

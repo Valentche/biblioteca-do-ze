@@ -42,3 +42,18 @@ C:\Users\PabloValenteNeto\Documents\Uniplacson\Desenvolvimento de sistemas 1\Aul
 C:\Users\PabloValenteNeto\Documents\Uniplacson\Desenvolvimento de sistemas 1\Aula 04 - projeto grande\biblioteca-do-ze\bin\Debug\net10.0\Biblioteca_do_Ze.pdb
 C:\Users\PabloValenteNeto\Documents\Uniplacson\Desenvolvimento de sistemas 1\Aula 04 - projeto grande\biblioteca-do-ze\obj\Debug\net10.0\Biblioteca_do_Ze.genruntimeconfig.cache
 C:\Users\PabloValenteNeto\Documents\Uniplacson\Desenvolvimento de sistemas 1\Aula 04 - projeto grande\biblioteca-do-ze\obj\Debug\net10.0\ref\Biblioteca_do_Ze.dll
+C:\Users\User\Documents\tio lu pt2\biblioteca-do-ze\bin\Debug\net10.0\Biblioteca_do_Ze.exe
+C:\Users\User\Documents\tio lu pt2\biblioteca-do-ze\bin\Debug\net10.0\Biblioteca_do_Ze.deps.json
+C:\Users\User\Documents\tio lu pt2\biblioteca-do-ze\bin\Debug\net10.0\Biblioteca_do_Ze.runtimeconfig.json
+C:\Users\User\Documents\tio lu pt2\biblioteca-do-ze\bin\Debug\net10.0\Biblioteca_do_Ze.dll
+C:\Users\User\Documents\tio lu pt2\biblioteca-do-ze\bin\Debug\net10.0\Biblioteca_do_Ze.pdb
+C:\Users\User\Documents\tio lu pt2\biblioteca-do-ze\obj\Debug\net10.0\Biblioteca_do_Ze.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\Documents\tio lu pt2\biblioteca-do-ze\obj\Debug\net10.0\Biblioteca_do_Ze.AssemblyInfoInputs.cache
+C:\Users\User\Documents\tio lu pt2\biblioteca-do-ze\obj\Debug\net10.0\Biblioteca_do_Ze.AssemblyInfo.cs
+C:\Users\User\Documents\tio lu pt2\biblioteca-do-ze\obj\Debug\net10.0\Biblioteca_do_Ze.csproj.CoreCompileInputs.cache
+C:\Users\User\Documents\tio lu pt2\biblioteca-do-ze\obj\Debug\net10.0\Biblioteca_do_Ze.sourcelink.json
+C:\Users\User\Documents\tio lu pt2\biblioteca-do-ze\obj\Debug\net10.0\Biblioteca_do_Ze.dll
+C:\Users\User\Documents\tio lu pt2\biblioteca-do-ze\obj\Debug\net10.0\refint\Biblioteca_do_Ze.dll
+C:\Users\User\Documents\tio lu pt2\biblioteca-do-ze\obj\Debug\net10.0\Biblioteca_do_Ze.pdb
+C:\Users\User\Documents\tio lu pt2\biblioteca-do-ze\obj\Debug\net10.0\Biblioteca_do_Ze.genruntimeconfig.cache
+C:\Users\User\Documents\tio lu pt2\biblioteca-do-ze\obj\Debug\net10.0\ref\Biblioteca_do_Ze.dll

@@ -2,3 +2,8 @@
 
 Pablo: Fala mestre, vou deixar aqui algumas comunicações do que eu ir fazendo no projeto, para você acompanhar, é a mesma coisa que no
 zap, mas mesmo assim kk
+
+21/03/2026
+gabriel
+Eu tive que mudar um pouco da definiçao de CadastroLeitor em Cadastro.cs e do objeto cadastroLeitor em Program.cs pois estavam sendo criadas duas listas de leitores separadas, uma no Program.cs
+e outra no Cadastro.cs, desse modo quando cadastrávamos a lista de Program.cs continuava vazia, a princípio está resolvido
