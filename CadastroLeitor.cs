@@ -33,7 +33,7 @@ namespace Cadastro
                 return;
             }
 
-            // Utilizamos o construtor com parâmetros (sobrecarga) que acabamos de criar!
+            // usando o construtor com parâmetros (sobrecarga)
             Leitor novoLeitor = new Leitor(nome, idade, cpf);
             leitores.Add(novoLeitor);
 
@@ -77,7 +77,7 @@ namespace Cadastro
             Console.Write("Digite o CPF do Leitor que deseja buscar: ");
             string cpfBusca = Console.ReadLine();
 
-            // Busca pelo Leitor com Expressão Lambda (LINQ) exigida no laboratório
+            // Busca pelo Leitor com Expressão Lambda (LINQ)
             Leitor leitorEncontrado = leitores.FirstOrDefault(l => l.cpf == cpfBusca);
 
             if (leitorEncontrado != null)
@@ -102,7 +102,7 @@ namespace Cadastro
             Console.Write("Digite o CPF do Leitor: ");
             string cpfBusca = Console.ReadLine();
 
-            // Utilizamos o LINQ (FirstOrDefault) para encontrar o primeiro leitor que bate com o CPF digitado
+            // usando o LINQ para encontrar o primeiro leitor que bate com o CPF digitado
             Leitor leitor = leitores.FirstOrDefault(l => l.cpf == cpfBusca);
 
             if (leitor != null)
