@@ -146,7 +146,7 @@ namespace Cadastro
 
             if (livro != null)
             {
-                // Aqui usamos a magia da Orientação a Objetos que vimos nos Slides (Aula 04 - Doar.cs)
+                // usando a Orientação a Objetos conforme exemplo dos slides do grande tio Lu
                 doador.DoarLivro(livro, destinatario);
                 Console.WriteLine($"Livro '{livro.Titulo}' doado de {doador.nome} para {destinatario.nome} com sucesso!");
             }

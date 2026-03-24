@@ -1,19 +1,23 @@
 using Cadastro;
 
+//ALUNOS
+//Pablo Valente Neto
+//Gabriel Francisco
+
 namespace Biblioteca
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            // Criando a Lista global de Leitores (nossa "Base de dados" na memória)
+            // Cria a Lista global de Leitores
             List<Leitor> leitores = new List<Leitor>();
 
             bool executando = true;
 
             while (executando)
             {
-                // Limpa o console para facilitar a visualização (opcional)
+                // menuzinho bonitinho pra rodar no console
                 Console.Clear();
                 Console.WriteLine("========================================");
                 Console.WriteLine("        SISTEMA BIBLIOTECA DO ZÉ         ");
@@ -40,16 +44,16 @@ namespace Biblioteca
                         cadastroLeitor.CadastrarLeitor(leitores);
                         break;
                     case "2":
-                        ListarTodosLeitores(leitores);
+                        cadastroLeitor.ListarTodosLeitores(leitores);
                         break;
                     case "3":
-                        ListarLeitorEspecifico(leitores);
+                        cadastroLeitor.ListarLeitorEspecifico(leitores);
                         break;
                     case "4":
-                        EditarLeitor(leitores);
+                        cadastroLeitor.EditarLeitor(leitores);
                         break;
                     case "5":
-                        ExcluirLeitor(leitores);
+                        cadastroLeitor.ExcluirLeitor(leitores);
                         break;
                     case "6":
                         cadastroLivro.CadastrarLivro(leitores);
@@ -84,121 +88,14 @@ namespace Biblioteca
         }
 
         // ==========================================
-        //  MÉTODOS DAS FUNCIONALIDADES (CRUD, ETC)
+        //  Aqui jás os métodos, foram todos pros outros arquivos kk.
         // ==========================================
 
 
         static CadastroLeitor cadastroLeitor = new CadastroLeitor();
         static CadastroLivro cadastroLivro = new CadastroLivro();
 
-        static void ListarTodosLeitores(List<Leitor> leitores)
-        {
-            Console.Clear();
-            Console.WriteLine("--- LISTA DE LEITORES E LIVROS ---");
 
-            if (leitores.Count == 0)
-            {
-                Console.WriteLine("Nenhum leitor cadastrado.");
-                return;
-            }
-
-            foreach (Leitor leitor in leitores)
-            {
-                Console.WriteLine($"\n> CPF: {leitor.cpf} | Nome: {leitor.nome} | Idade: {leitor.idade}");
-                Console.WriteLine("  Livros:");
-
-                if (leitor.LivrosLeitor.Count == 0)
-                {
-                    Console.WriteLine("    [Nenhum livro cadastrado]");
-                }
-                else
-                {
-                    foreach (Livro livro in leitor.LivrosLeitor)
-                    {
-                        Console.WriteLine($"    - Título: {livro.Titulo} | Autor: {livro.Autor}");
-                    }
-                }
-            }
-        }
-
-        static void ListarLeitorEspecifico(List<Leitor> leitores)
-        {
-            Console.Clear();
-            Console.WriteLine("--- LISTAR LEITOR ESPECÍFICO ---");
-            Console.Write("Digite o CPF do Leitor que deseja buscar: ");
-            string cpfBusca = Console.ReadLine();
-
-            // Busca pelo Leitor com Expressão Lambda (LINQ) exigida no laboratório
-            Leitor leitorEncontrado = leitores.FirstOrDefault(l => l.cpf == cpfBusca);
-
-            if (leitorEncontrado != null)
-            {
-                Console.WriteLine($"\n> CPF: {leitorEncontrado.cpf} | Nome: {leitorEncontrado.nome} | Idade: {leitorEncontrado.idade}");
-                Console.WriteLine("  Livros:");
-                foreach (Livro livro in leitorEncontrado.LivrosLeitor)
-                {
-                    Console.WriteLine($"    - Título: {livro.Titulo} | Autor: {livro.Autor}");
-                }
-            }
-            else
-            {
-                Console.WriteLine("Leitor não encontrado.");
-            }
-        }
-
-        static void EditarLeitor(List<Leitor> leitores)
-        {
-            Console.Clear();
-            Console.WriteLine("--- EDITAR LEITOR ---");
-            Console.Write("Digite o CPF do Leitor: ");
-            string cpfBusca = Console.ReadLine();
-
-            // Utilizamos o LINQ (FirstOrDefault) para encontrar o primeiro leitor que bate com o CPF digitado
-            Leitor leitor = leitores.FirstOrDefault(l => l.cpf == cpfBusca);
-
-            if (leitor != null)
-            {
-                Console.WriteLine($"Editando leitor atual: {leitor.nome}");
-
-                Console.Write("Novo Nome: ");
-                leitor.nome = Console.ReadLine();
-
-                Console.Write("Nova Idade: ");
-                if (int.TryParse(Console.ReadLine(), out int novaIdade))
-                {
-                    leitor.idade = novaIdade;
-                    Console.WriteLine("Leitor atualizado com sucesso!");
-                }
-                else
-                {
-                    Console.WriteLine("Idade inválida. Edição cancelada.");
-                }
-            }
-            else
-            {
-                Console.WriteLine("Leitor não encontrado.");
-            }
-        }
-
-        static void ExcluirLeitor(List<Leitor> leitores)
-        {
-            Console.Clear();
-            Console.WriteLine("--- EXCLUIR LEITOR ---");
-            Console.Write("Digite o CPF do Leitor a ser excluído: ");
-            string cpfBusca = Console.ReadLine();
-
-            Leitor leitor = leitores.FirstOrDefault(l => l.cpf == cpfBusca);
-
-            if (leitor != null)
-            {
-                leitores.Remove(leitor);
-                Console.WriteLine("Leitor excluído com sucesso!");
-            }
-            else
-            {
-                Console.WriteLine("Leitor não encontrado.");
-            }
-        }
 
     }
 }
