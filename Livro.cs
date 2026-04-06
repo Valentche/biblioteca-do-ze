@@ -1,38 +1,130 @@
 namespace Biblioteca
 {
-
     public class Livro
     {
-        public string Titulo;
-        public string Subtitulo;
-        public string Genero;
-        public string Autor;
-        public string Editora;
-        public int AnoPublicacao;
-        public int Paginas;
-        public int Capitulos;
+        private string _isbn;
+        private string _titulo;
+        private string _subtitulo;
+        private string _escritor;
+        private string _editora;
+        private string _genero;
+        private int _anoPublicacao;
+        private string _tipoDaCapa;
+        private int _numeroDePaginas;
 
-        // com o public antes do tipo da variável, 
-        // ela se torna acessível de fora da classe, ou seja, 
-        // pode ser acessada e modificada por outras partes do 
-        // código que utilizam a classe Livro. 
-        // Isso é útil para permitir que outras partes do programa 
-        // possam ler e alterar as informações dos livros, como título,
-        // autor, etc.
+        // ── Propriedades encapsuladas ─────────────────────────────────────────────────
 
-        // Construtor vazio: Permite criar um livro sem passar dados logo de cara (ex: `new Livro()`)
-        // Muito útil quando vamos ler os dados do teclado um por um depois de criar o objeto.
-        public Livro() 
-        { 
+        // 'init': substitui o 'set' comum, mas permite atribuição APENAS durante a
+        // inicialização do objeto (construtor ou object initializer { }).
+        // Após a criação, livro.Isbn = "x" gera ERRO DE COMPILAÇÃO — garantindo imutabilidade.
+        public string Isbn
+        {
+            get => _isbn;
+            init
+            {
+                if (string.IsNullOrWhiteSpace(value))
+                    throw new ArgumentException("ISBN não pode ser nulo ou vazio.");
+                _isbn = value.Trim();
+            }
         }
 
-        // Construtor com parâmetros: Permite criar um livro já passando os dados básicos.
-        // Isso é o que o professor chamou de "Sobrecarga de construtores" nos slides!
-        public Livro(string titulo, string autor)
+        public string Titulo
         {
-            this.Titulo = titulo;
-            this.Autor = autor;
+            get => _titulo;
+            set
+            {
+                if (string.IsNullOrWhiteSpace(value))
+                    throw new ArgumentException("Título não pode ser nulo ou vazio.");
+                _titulo = value.Trim();
+            }
+        }
+
+        public string Subtitulo
+        {
+            get => _subtitulo;
+            set
+            {
+                if (string.IsNullOrWhiteSpace(value))
+                    throw new ArgumentException("Subtítulo não pode ser nulo ou vazio.");
+                _subtitulo = value.Trim();
+            }
+        }
+
+        public string Escritor
+        {
+            get => _escritor;
+            set
+            {
+                if (string.IsNullOrWhiteSpace(value))
+                    throw new ArgumentException("Escritor não pode ser nulo ou vazio.");
+                _escritor = value.Trim();
+            }
+        }
+
+        public string Editora
+        {
+            get => _editora;
+            set
+            {
+                if (string.IsNullOrWhiteSpace(value))
+                    throw new ArgumentException("Editora não pode ser nula ou vazia.");
+                _editora = value.Trim();
+            }
+        }
+
+        public string Genero
+        {
+            get => _genero;
+            set
+            {
+                if (string.IsNullOrWhiteSpace(value))
+                    throw new ArgumentException("Gênero não pode ser nulo ou vazio.");
+                _genero = value.Trim();
+            }
+        }
+
+        public int AnoPublicacao
+        {
+            get => _anoPublicacao;
+            set
+            {
+                // Pega o ano atual via sistema — nunca hardcoded.
+                int anoAtual = DateTime.Now.Year;
+                if (value < 1970 || value > anoAtual)
+                    throw new ArgumentException($"Ano de publicação deve estar entre 1970 e {anoAtual}.");
+                _anoPublicacao = value;
+            }
+        }
+
+        public string TipoDaCapa
+        {
+            get => _tipoDaCapa;
+            set
+            {
+                if (string.IsNullOrWhiteSpace(value))
+                    throw new ArgumentException("Tipo da capa não pode ser nulo ou vazio.");
+                _tipoDaCapa = value.Trim();
+            }
+        }
+
+        public int NumeroDePaginas
+        {
+            get => _numeroDePaginas;
+            set
+            {
+                if (value < 0)
+                    throw new ArgumentException("Número de páginas não pode ser negativo.");
+                _numeroDePaginas = value;
+            }
+        }
+
+        // ── Construtor ────────────────────────────────────────────────────────────────
+
+        // Isbn é obrigatório na criação: passado via construtor e protegido pelo 'init'.
+        // As demais propriedades são preenchidas via object initializer ou diretamente.
+        public Livro(string isbn)
+        {
+            Isbn = isbn;
         }
     }
-
 }

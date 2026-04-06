@@ -2,62 +2,107 @@ namespace Biblioteca
 {
     public class Leitor
     {
-        public string nome;
-        public int idade;
-        
-        // Atributo adicionado para atender a exigência do Laboratório: 
-        // "No leitor incluir um atributo para o Cpf, garantindo assim um identificador único"
-        public string cpf;
+        // Coleção estática compartilhada por TODOS os objetos Leitor.
+        // Garante que nenhum CPF se repita, mesmo que a validação da camada de interface
+        // seja esquecida por quem estiver programando o cadastro.
+        private static HashSet<string> _cpfsRegistrados = new HashSet<string>();
 
-        public List<Livro> LivrosLeitor = new List<Livro>();
-        //o list acima funciona como uma coleção de objetos do tipo Livro,
-        //permitindo que um leitor possa ter uma lista de livros associados a ele.
+        private string _nome;
+        private string _cpf;
+        private int _idade;
 
-        // Construtor vazio: Útil para criar o leitor passo a passo enquanto lemos as informações do terminal
-        public Leitor()
+        // ── Propriedades encapsuladas ────────────────────────────────────────────────
+
+        public string Nome
         {
+            get => _nome;
+            set
+            {
+                if (string.IsNullOrWhiteSpace(value))
+                    throw new ArgumentException("Nome não pode ser nulo ou vazio.");
+                _nome = value.Trim();
+            }
         }
 
-        // Construtor com sobrecarga: Já constrói o leitor com as propriedades preenchidas
+        public string Cpf
+        {
+            get => _cpf;
+            set
+            {
+                if (string.IsNullOrWhiteSpace(value))
+                    throw new ArgumentException("CPF não pode ser nulo ou vazio.");
+
+                string cpfTrimmed = value.Trim();
+
+                // Regra de negócio: CPF deve ser único entre todos os leitores cadastrados.
+                if (_cpfsRegistrados.Contains(cpfTrimmed))
+                    throw new ArgumentException($"CPF '{cpfTrimmed}' já está em uso por outro leitor.");
+
+                // Se o leitor já tinha um CPF (caso de edição), libera o anterior.
+                if (_cpf != null)
+                    _cpfsRegistrados.Remove(_cpf);
+
+                _cpf = cpfTrimmed;
+                _cpfsRegistrados.Add(_cpf);
+            }
+        }
+
+        public int Idade
+        {
+            get => _idade;
+            set
+            {
+                if (value < 0)
+                    throw new ArgumentException("Idade não pode ser negativa.");
+                _idade = value;
+            }
+        }
+
+        public List<Livro> LivrosLeitor = new List<Livro>();
+
+        // ── Construtores ─────────────────────────────────────────────────────────────
+
+        // Construtor vazio: permite criar o leitor passo a passo.
+        public Leitor() { }
+
+        // Construtor com sobrecarga: já constrói o leitor com as propriedades preenchidas.
+        // Os setters são chamados aqui, aplicando todas as validações.
         public Leitor(string nome, int idade, string cpf)
         {
-            this.nome = nome;
-            this.idade = idade;
-            this.cpf = cpf;
+            Nome = nome;
+            Idade = idade;
+            Cpf = cpf;
+        }
+
+        // ── Métodos de controle ───────────────────────────────────────────────────────
+
+        // Deve ser chamado ANTES de remover o leitor do sistema.
+        // Libera o CPF da coleção estática para que possa ser reutilizado.
+        public void LiberarCpf()
+        {
+            if (_cpf != null)
+                _cpfsRegistrados.Remove(_cpf);
         }
 
         public void AdicionarLivro(Livro livro)
         {
             LivrosLeitor.Add(livro);
-            //o método acima adiciona um livro à lista de livros do leitor,
-            //permitindo que o leitor registre os livros que leu.
-
         }
 
         public void RemoverLivro(Livro livro)
         {
             LivrosLeitor.Remove(livro);
-            //o método acima remove um livro da lista de livros do leitor,
-            //permitindo que o leitor atualize sua lista de livros lidos.
-
         }
 
         public void DoarLivro(Livro livro, Leitor destinatario)
         {
-            // Verificamos se o doador realmente tem o livro na lista usando o método .Contains()
-            if (LivrosLeitor.Contains(livro))
-            {
-                LivrosLeitor.Remove(livro); // Tira da lista do doador
-                destinatario.AdicionarLivro(livro); // Adiciona na lista do destinatário
-                //o método acima permite que um leitor doe um livro para outro leitor,
-                //removendo o livro da lista do doador e adicionando-o à lista do destinatário.
-            }
-            else
-            {
-                Console.WriteLine("O livro não está na lista do leitor doador.");
-                //caso o livro não esteja na lista do leitor, uma mensagem de erro é exibida.
-            }
-        }
+            // Regra de negócio movida para dentro da classe: erro lançado via exceção,
+            // sem nenhuma dependência de Console (funciona em qualquer tipo de projeto).
+            if (!LivrosLeitor.Contains(livro))
+                throw new InvalidOperationException("O livro não está na lista do leitor doador.");
 
+            LivrosLeitor.Remove(livro);
+            destinatario.AdicionarLivro(livro);
+        }
     }
 }
