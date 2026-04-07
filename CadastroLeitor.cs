@@ -5,34 +5,26 @@ using Biblioteca;
 
 namespace Cadastro
 {
-    /// <summary>
-    /// Classe responsável pela lógica de cadastro de leitores.
-    /// Não possui dependência com console ou Interface de usuário.
-    /// Todas as validações e mensagens de erro são feitas via exceções.
-    /// </summary>
+    // Classe responsável pela lógica de cadastro de leitores.
+    // Não possui dependência com console ou Interface de usuário.
+    // Todas as validações e mensagens de erro são feitas via exceções.
     public class CadastroLeitor
     {
-        /// <summary>
-        /// Verifica se um CPF já está registrado na lista.
-        /// </summary>
+        // Verifica se um CPF já está registrado na lista.
         public bool CpfJaExiste(List<Leitor> leitores, string cpf)
         {
             return leitores.Any(l => l.Cpf == cpf);
         }
 
-        /// <summary>
-        /// Cria e adiciona um novo leitor à lista.
-        /// Lança exceção se houver erro (CPF duplicado, dados inválidos, etc).
-        /// </summary>
+        // Cria e adiciona um novo leitor à lista.
+        // Lança exceção se houver erro (CPF duplicado, dados inválidos, etc).
         public void CadastrarLeitor(List<Leitor> leitores, string cpf, string nome, int idade)
         {
             Leitor novoLeitor = new Leitor(nome, idade, cpf);
             leitores.Add(novoLeitor);
         }
 
-        /// <summary>
-        /// Retorna string formatada com todos os leitores e seus livros.
-        /// </summary>
+        // Retorna string formatada com todos os leitores e seus livros.
         public string ListarTodosLeitores(List<Leitor> leitores)
         {
             if (leitores.Count == 0)
@@ -62,10 +54,8 @@ namespace Cadastro
             return sb.ToString();
         }
 
-        /// <summary>
-        /// Busca um leitor pelo CPF e retorna string formatada com seus dados.
-        /// Lança KeyNotFoundException se não encontrar.
-        /// </summary>
+        // Busca um leitor pelo CPF e retorna string formatada com seus dados.
+        // Lança KeyNotFoundException se não encontrar.
         public string ListarLeitorEspecifico(List<Leitor> leitores, string cpf)
         {
             Leitor leitor = leitores.FirstOrDefault(l => l.Cpf == cpf);
@@ -85,10 +75,8 @@ namespace Cadastro
             return sb.ToString();
         }
 
-        /// <summary>
-        /// Edita o nome e idade de um leitor.
-        /// Lança exceção se não encontrar ou se os dados forem inválidos.
-        /// </summary>
+        // Edita o nome e idade de um leitor.
+        // Lança exceção se não encontrar ou se os dados forem inválidos.
         public void EditarLeitor(List<Leitor> leitores, string cpf, string novoNome, int novaIdade)
         {
             Leitor leitor = leitores.FirstOrDefault(l => l.Cpf == cpf);
@@ -101,10 +89,8 @@ namespace Cadastro
             leitor.Idade = novaIdade;
         }
 
-        /// <summary>
-        /// Remove um leitor da lista.
-        /// Lança exceção se não encontrar.
-        /// </summary>
+        // Remove um leitor da lista.
+        // Lança exceção se não encontrar.
         public void ExcluirLeitor(List<Leitor> leitores, string cpf)
         {
             Leitor leitor = leitores.FirstOrDefault(l => l.Cpf == cpf);
@@ -116,10 +102,8 @@ namespace Cadastro
             leitores.Remove(leitor);
         }
 
-        /// <summary>
-        /// Busca um leitor pelo CPF.
-        /// Retorna null se não encontrar.
-        /// </summary>
+        // Busca um leitor pelo CPF.
+        // Retorna null se não encontrar.
         public Leitor EncontrarLeitor(List<Leitor> leitores, string cpf)
         {
             return leitores.FirstOrDefault(l => l.Cpf == cpf);

@@ -5,17 +5,13 @@ using Biblioteca;
 
 namespace Cadastro
 {
-    /// <summary>
-    /// Classe responsável pela lógica de cadastro de livros.
-    /// Não possui dependência com console ou interface de usuário.
-    /// Todas as validações e mensagens de erro são feitas via exceções.
-    /// </summary>
+    // Classe responsável pela lógica de cadastro de livros.
+    // Não possui dependência com console ou interface de usuário.
+    // Todas as validações e mensagens de erro são feitas via exceções.
     public class CadastroLivro
     {
-        /// <summary>
-        /// Cria e adiciona um novo livro à lista de um leitor.
-        /// Lança exceção se houver erro (dados inválidos, leitor não encontrado, etc).
-        /// </summary>
+        // Cria e adiciona um novo livro à lista de um leitor.
+        // Lança exceção se houver erro (dados inválidos, leitor não encontrado, etc).
         public void CadastrarLivro(List<Leitor> leitores, string cpfLeitor, string isbn, string titulo,
                                    string subtitulo, string escritor, string editora, string genero,
                                    string tipoDaCapa, int anoPublicacao, int numeroDePaginas)
@@ -40,10 +36,8 @@ namespace Cadastro
             leitor.AdicionarLivro(novoLivro);
         }
 
-        /// <summary>
-        /// Busca um livro pelo titulo no acervo de um leitor.
-        /// Lança exceção se não encontrar.
-        /// </summary>
+        // Busca um livro pelo titulo no acervo de um leitor.
+        // Lança exceção se não encontrar.
         private Livro EncontrarLivroPorTitulo(Leitor leitor, string titulo)
         {
             Livro livro = leitor.LivrosLeitor.FirstOrDefault(lv =>
@@ -55,10 +49,8 @@ namespace Cadastro
             return livro;
         }
 
-        /// <summary>
-        /// Edita os dados de um livro (exceto ISBN, que é imutável).
-        /// Lança exceção se não encontrar leitor ou livro.
-        /// </summary>
+        // Edita os dados de um livro (exceto ISBN, que é imutável).
+        // Lança exceção se não encontrar leitor ou livro.
         public void EditarLivro(List<Leitor> leitores, string cpfLeitor, string tituloAtual,
                                 string novoTitulo, string novoSubtitulo, string novoEscritor,
                                 string novaEditora, string novoGenero, string novoTipoDaCapa,
@@ -81,10 +73,8 @@ namespace Cadastro
             livro.NumeroDePaginas = novoNumeroDePaginas;
         }
 
-        /// <summary>
-        /// Remove um livro do acervo de um leitor (simulando perda).
-        /// Lança exceção se não encontrar leitor ou livro.
-        /// </summary>
+        // Remove um livro do acervo de um leitor (simulando perda).
+        // Lança exceção se não encontrar leitor ou livro.
         public void RemoverLivro(List<Leitor> leitores, string cpfLeitor, string tituloLivro)
         {
             Leitor leitor = leitores.FirstOrDefault(l => l.Cpf == cpfLeitor);
@@ -96,10 +86,8 @@ namespace Cadastro
             leitor.RemoverLivro(livro);
         }
 
-        /// <summary>
-        /// Realiza a doação de um livro entre dois leitores.
-        /// Lança exceção se algum não for encontrado.
-        /// </summary>
+        // Realiza a doação de um livro entre dois leitores.
+        // Lança exceção se algum não for encontrado.
         public void DoarLivro(List<Leitor> leitores, string cpfDoador, string cpfDestinatario,
                               string tituloLivro)
         {
@@ -118,10 +106,8 @@ namespace Cadastro
             doador.DoarLivro(livro, destinatario);
         }
 
-        /// <summary>
-        /// Pesquisa qual(is) leitor(es) possui um livro com o titulo especificado.
-        /// Retorna string com o resultado da busca.
-        /// </summary>
+        // Pesquisa qual(is) leitor(es) possui um livro com o titulo especificado.
+        // Retorna string com o resultado da busca.
         public string PesquisarLivro(List<Leitor> leitores, string tituloBusca)
         {
             var sb = new System.Text.StringBuilder();
