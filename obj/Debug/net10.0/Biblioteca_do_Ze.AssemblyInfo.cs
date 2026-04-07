@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Biblioteca_do_Ze")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+107b40e5b5ee8cc6395e34e57ceba80a2c876911")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0debec1e3dbc6c4bf60909d0a2530232f4e7d629")]
 [assembly: System.Reflection.AssemblyProductAttribute("Biblioteca_do_Ze")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Biblioteca_do_Ze")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
