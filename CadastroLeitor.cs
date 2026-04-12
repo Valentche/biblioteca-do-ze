@@ -1,152 +1,112 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using Biblioteca;
 
 namespace Cadastro
 {
+    // Classe responsável pela lógica de cadastro de leitores.
+    // Não possui dependência com console ou Interface de usuário.
+    // Todas as validações e mensagens de erro são feitas via exceções.
     public class CadastroLeitor
     {
-        public void CadastrarLeitor(List<Leitor> leitores)
+        // Verifica se um CPF já está registrado na lista.
+        public bool CpfJaExiste(List<Leitor> leitores, string cpf)
         {
-            Console.Clear();
-            Console.WriteLine("--- CADASTRAR LEITOR ---");
-            Console.Write("Digite o CPF do Leitor (apenas números): ");
-            string cpf = Console.ReadLine();
-
-            // Validação usando LINQ: Verifica se o cpf digitado já existe na lista
-            // Isso cobre a exigência "validar se o CPF informado já não esta em uso".
-            // .Any() retorna true se encontrar alguém com a mesma condição.
-            if (leitores.Any(l => l.cpf == cpf))
-            {
-                Console.WriteLine("ERRO: Já existe um leitor cadastrado com este CPF.");
-                return; // O return interrompe o fluxo e volta pro menu
-            }
-
-            Console.Write("Digite o Nome do Leitor: ");
-            string nome = Console.ReadLine();
-
-            Console.Write("Digite a Idade do Leitor: ");
-            if (!int.TryParse(Console.ReadLine(), out int idade))
-            {
-                Console.WriteLine("ERRO: Idade inválida.");
-                return;
-            }
-
-            // usando o construtor com parâmetros (sobrecarga)
-            Leitor novoLeitor = new Leitor(nome, idade, cpf);
-            leitores.Add(novoLeitor);
-
-            Console.WriteLine("Leitor cadastrado com sucesso!");
+            return leitores.Any(l => l.Cpf == cpf);
         }
 
-        public void ListarTodosLeitores(List<Leitor> leitores)
+        // Cria e adiciona um novo leitor à lista.
+        // Lança exceção se houver erro (CPF duplicado, dados inválidos, etc).
+        public void CadastrarLeitor(List<Leitor> leitores, string cpf, string nome, int idade)
         {
-            Console.Clear();
-            Console.WriteLine("--- LISTA DE LEITORES E LIVROS ---");
+            Leitor novoLeitor = new Leitor(nome, idade, cpf);
+            leitores.Add(novoLeitor);
+        }
 
+        // Retorna string formatada com todos os leitores e seus livros.
+        public string ListarTodosLeitores(List<Leitor> leitores)
+        {
             if (leitores.Count == 0)
-            {
-                Console.WriteLine("Nenhum leitor cadastrado.");
-                return;
-            }
+                return "Nenhum leitor cadastrado.";
+
+            var sb = new System.Text.StringBuilder();
+            sb.AppendLine("\n--- LISTA DE LEITORES E LIVROS ---");
 
             foreach (Leitor leitor in leitores)
             {
-                Console.WriteLine($"\n> CPF: {leitor.cpf} | Nome: {leitor.nome} | Idade: {leitor.idade}");
-                Console.WriteLine("  Livros:");
+                sb.AppendLine($"> CPF: {leitor.Cpf} | Nome: {leitor.Nome} | Idade: {leitor.Idade}");
+                sb.AppendLine("  Livros:");
 
                 if (leitor.LivrosLeitor.Count == 0)
                 {
-                    Console.WriteLine("    [Nenhum livro cadastrado]");
+                    sb.AppendLine("    [Nenhum livro cadastrado]");
                 }
                 else
                 {
                     foreach (Livro livro in leitor.LivrosLeitor)
                     {
-                        Console.WriteLine($"    - Título: {livro.Titulo} | Autor: {livro.Autor}");
+                        sb.AppendLine($"    - ISBN: {livro.Isbn} | Titulo: {livro.Titulo} | Escritor: {livro.Escritor}");
                     }
                 }
             }
+
+            return sb.ToString();
         }
 
-        public void ListarLeitorEspecifico(List<Leitor> leitores)
+        // Busca um leitor pelo CPF e retorna string formatada com seus dados.
+        // Lança KeyNotFoundException se não encontrar.
+        public string ListarLeitorEspecifico(List<Leitor> leitores, string cpf)
         {
-            Console.Clear();
-            Console.WriteLine("--- LISTAR LEITOR ESPECÍFICO ---");
-            Console.Write("Digite o CPF do Leitor que deseja buscar: ");
-            string cpfBusca = Console.ReadLine();
+            Leitor leitor = leitores.FirstOrDefault(l => l.Cpf == cpf);
 
-            // Busca pelo Leitor com Expressão Lambda (LINQ)
-            Leitor leitorEncontrado = leitores.FirstOrDefault(l => l.cpf == cpfBusca);
+            if (leitor == null)
+                throw new KeyNotFoundException($"Leitor com CPF '{cpf}' nao encontrado.");
 
-            if (leitorEncontrado != null)
+            var sb = new System.Text.StringBuilder();
+            sb.AppendLine($"\n> CPF: {leitor.Cpf} | Nome: {leitor.Nome} | Idade: {leitor.Idade}");
+            sb.AppendLine("  Livros:");
+
+            foreach (Livro livro in leitor.LivrosLeitor)
             {
-                Console.WriteLine($"\n> CPF: {leitorEncontrado.cpf} | Nome: {leitorEncontrado.nome} | Idade: {leitorEncontrado.idade}");
-                Console.WriteLine("  Livros:");
-                foreach (Livro livro in leitorEncontrado.LivrosLeitor)
-                {
-                    Console.WriteLine($"    - Título: {livro.Titulo} | Autor: {livro.Autor}");
-                }
+                sb.AppendLine($"    - ISBN: {livro.Isbn} | Titulo: {livro.Titulo} | Escritor: {livro.Escritor}");
             }
-            else
-            {
-                Console.WriteLine("Leitor não encontrado.");
-            }
+
+            return sb.ToString();
         }
 
-        public void EditarLeitor(List<Leitor> leitores)
+        // Edita o nome e idade de um leitor.
+        // Lança exceção se não encontrar ou se os dados forem inválidos.
+        public void EditarLeitor(List<Leitor> leitores, string cpf, string novoNome, int novaIdade)
         {
-            Console.Clear();
-            Console.WriteLine("--- EDITAR LEITOR ---");
-            Console.Write("Digite o CPF do Leitor: ");
-            string cpfBusca = Console.ReadLine();
+            Leitor leitor = leitores.FirstOrDefault(l => l.Cpf == cpf);
 
-            // usando o LINQ para encontrar o primeiro leitor que bate com o CPF digitado
-            Leitor leitor = leitores.FirstOrDefault(l => l.cpf == cpfBusca);
+            if (leitor == null)
+                throw new KeyNotFoundException($"Leitor com CPF '{cpf}' nao encontrado.");
 
-            if (leitor != null)
-            {
-                Console.WriteLine($"Editando leitor atual: {leitor.nome}");
-
-                Console.Write("Novo Nome: ");
-                leitor.nome = Console.ReadLine();
-
-                Console.Write("Nova Idade: ");
-                if (int.TryParse(Console.ReadLine(), out int novaIdade))
-                {
-                    leitor.idade = novaIdade;
-                    Console.WriteLine("Leitor atualizado com sucesso!");
-                }
-                else
-                {
-                    Console.WriteLine("Idade inválida. Edição cancelada.");
-                }
-            }
-            else
-            {
-                Console.WriteLine("Leitor não encontrado.");
-            }
+            // Os setters vão validar e lançar exceção se necessário
+            leitor.Nome = novoNome;
+            leitor.Idade = novaIdade;
         }
 
-        public void ExcluirLeitor(List<Leitor> leitores)
+        // Remove um leitor da lista.
+        // Lança exceção se não encontrar.
+        public void ExcluirLeitor(List<Leitor> leitores, string cpf)
         {
-            Console.Clear();
-            Console.WriteLine("--- EXCLUIR LEITOR ---");
-            Console.Write("Digite o CPF do Leitor a ser excluído: ");
-            string cpfBusca = Console.ReadLine();
+            Leitor leitor = leitores.FirstOrDefault(l => l.Cpf == cpf);
 
-            Leitor leitor = leitores.FirstOrDefault(l => l.cpf == cpfBusca);
+            if (leitor == null)
+                throw new KeyNotFoundException($"Leitor com CPF '{cpf}' nao encontrado.");
 
-            if (leitor != null)
-            {
-                leitores.Remove(leitor);
-                Console.WriteLine("Leitor excluído com sucesso!");
-            }
-            else
-            {
-                Console.WriteLine("Leitor não encontrado.");
-            }
+            leitor.LiberarCpf();
+            leitores.Remove(leitor);
+        }
+
+        // Busca um leitor pelo CPF.
+        // Retorna null se não encontrar.
+        public Leitor EncontrarLeitor(List<Leitor> leitores, string cpf)
+        {
+            return leitores.FirstOrDefault(l => l.Cpf == cpf);
         }
     }
 }
